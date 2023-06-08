@@ -18,7 +18,10 @@ class AdminMiddleware
         
         try {
             $jwt = $request->bearerToken(); //ambil token
-            
+            if (!$jwt) {
+                return response()->json('Invalid token', 400);
+            }
+
             $decoded = JWT::decode($jwt,new Key(env('JWT_SECRET_KEY'),'HS256'));
 
             //kondisi jika role pada token adalah admin,maka lanjut proses selanjutnya

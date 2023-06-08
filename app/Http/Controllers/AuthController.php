@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\User;
-use App\Models\log;
+use App\Models\Log;
 use Firebase\JWT\JWT;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +26,8 @@ class AuthController extends Controller
         }
         
         $user = $validator->validated();
-    
+        $user['role'] = 'user';
+
         //masukkan ke database tabel user
         User::create($user);
     

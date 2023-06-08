@@ -6,6 +6,28 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admincontroller; 
 use App\Http\Controllers\ProductsController; 
 use App\Http\Controllers\Bayar;
+use App\Http\Controllers\BacaBayar;
+use App\Http\Controllers\DeleteProductController;
+use App\Http\Controllers\EditProductController;
+
+use App\Http\Controllers\Cariproduct;
+
+use App\Http\Controllers\BuatProductController;
+
+Route::post('/create/product', [BuatProductController::class, 'create']);
+
+Route::get('/search/products/{id}', [Cariproduct::class, 'getProductById']);
+
+// Route untuk halaman edit produk
+Route::get('/products/{id}/edit', [EditProductController::class, 'edit']);
+Route::put('/products/{id}', [EditProductController::class, 'update']);
+
+
+// Menghapus produk berdasarkan ID
+Route::delete('/delete/products/{id}', [DeleteProductController::class, 'destroy']);
+
+
+
 
 Route::post('register',[AuthController::class,'register']);
 Route::post('login',[AuthController::class,'login']);
@@ -32,7 +54,7 @@ Route::get('products',[ProductsController::class,'show_products']);
     
 
 Route::post('bayar', [Bayar::class, 'store']);
-
+Route::get('historybayar', [BacaBayar::class, 'show_bayar']);
 /*
 |--------------------------------------------------------------------------
 | API Routes

@@ -7,6 +7,7 @@ use App\Models\TblBayar;
 
 class Bayar extends Controller
 {
+    
     public function store(Request $request)
     {
         // Validasi inputan

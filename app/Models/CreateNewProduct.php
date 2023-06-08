@@ -1,20 +1,13 @@
 <?php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Products extends Model
+class CreateNewProduct extends Model
 {
     use HasFactory;
-    protected $table = 'products';
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'judul',
         'author',
@@ -23,12 +16,10 @@ class Products extends Model
         'products_type',
         'products_price',
         'status_products',
-        'user_email'
+        'user_email',
+        'idproducts',
     ];
 
-    // public function user(){
-    //     return $this->belongsTo(User::class,'user_email','email');
-    // }
+    protected $table = 'products'; // Nama tabel di database
+    protected $primaryKey = 'idproducts';
 }
-
-

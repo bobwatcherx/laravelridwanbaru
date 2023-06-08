@@ -10,12 +10,11 @@ class ProductsController extends Controller
 {
     public function show_products()
     {
-        $products = Products::with('user')->where('status_products', 'tersedia')->get();
-
+        // $products = Products::with('user')->where('status_products', 'tersedia')->get();
+        $products = Products::all();
         $data = [];
         foreach ($products as $product) {
             // Menambahkan pengecekan untuk memastikan objek user tidak null
-            if ($product->user) {
                 array_push($data, [
                     'idproducts' => $product->idproducts,
                     'judul' => $product->judul,
@@ -25,7 +24,6 @@ class ProductsController extends Controller
                     'tersedia' => $product->status_products,
 
                 ]);
-            }
         }
 
         return response()->json($data, 200);
