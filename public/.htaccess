@@ -18,4 +18,13 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    # Send Requests To Front GW
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^((?!api/).*)$ index.php [L]
+
+    # Send Requests To routes/api.php for API routes
+    RewriteRule ^api/.*$ routes/api.php [L]
+
 </IfModule>
